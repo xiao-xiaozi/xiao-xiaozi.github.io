@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="二者皆让我沉醉不已！">
 <meta property="og:description" content="什么是跨域一个请求url的协议，域名，端口三者之间任意一个与当前页面地址不同，即为跨域。浏览器默认的安全限制为同源策略，即JavaScript或cookie只能访问同源(相同协议，相同域名，相同端口)下的内容。 CORS解决跨域CORS，全称是Cross-Origin Resourc Sharing(跨域资源共享)。它允许浏览器向跨源服务器发出请求。CORS需要浏览器和服务器同时支持。目前主流">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-22T05:55:20.006Z">
+<meta property="og:updated_time" content="2019-09-22T06:03:42.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于跨域和常用解决方法">
 <meta name="twitter:description" content="什么是跨域一个请求url的协议，域名，端口三者之间任意一个与当前页面地址不同，即为跨域。浏览器默认的安全限制为同源策略，即JavaScript或cookie只能访问同源(相同协议，相同域名，相同端口)下的内容。 CORS解决跨域CORS，全称是Cross-Origin Resourc Sharing(跨域资源共享)。它允许浏览器向跨源服务器发出请求。CORS需要浏览器和服务器同时支持。目前主流">
@@ -98,7 +98,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'发送给服务端的数据'</span>;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,url,<span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
 
 <p>后端的“Access-Control-Allow-Headers”配置中必须包含该请求头，即可跨域取资源。同时也需要对“Access-Control-Allow-Origin”进行配置，对应请求url地址，或者配置为“*”，接受任何域名请求。</p>
-<h2 id="nginx解决跨域"><a href="#nginx解决跨域" class="headerlink" title="nginx解决跨域"></a>nginx解决跨域</h2><p>目前比价常用的跨域解决方法是利用nginx设置代理。nginx解决跨域的方法是拦截跨域请求，反向代理到接口地址。项目在本地跑起来的时候都是localhost的域名，与接口地址很明确不是同源策略。<br>项目中的数据请求：</p>
+<h2 id="nginx解决跨域"><a href="#nginx解决跨域" class="headerlink" title="nginx解决跨域"></a>nginx解决跨域</h2><p>目前比较常用的跨域解决方法是利用nginx反向代理。nginx解决跨域的方法是拦截跨域请求，反向代理到接口地址。项目在本地跑起来的时候都是localhost的域名，与接口地址很明确不是同源策略。<br>项目中的数据请求：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'发送给服务端的数据'</span>;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line"><span class="comment"># xhr.open('POST','http://jiekoudizhi:8081/home/list');</span></span><br><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'http://localhost/home/list'</span>);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
 
 <p>将项目的请求地址改为本地请求地址，在nginx中配置拦截该请求，代理到对应的接口地址。<br>nginx配置：</p>
@@ -136,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/22/关于跨域的解决方法/" data-id="ck0ufpxkd0002covrq43w8yux" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/22/关于跨域的解决方法/" data-id="ck0ukuhe10002ewvru0l0qc3w" class="article-share-link">Share</a>
       
       
     </footer>
