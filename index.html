@@ -195,6 +195,9 @@
 <h2 id="CORS解决跨域"><a href="#CORS解决跨域" class="headerlink" title="CORS解决跨域"></a>CORS解决跨域</h2><p>CORS，全称是Cross-Origin Resourc Sharing(跨域资源共享)。它允许浏览器向跨源服务器发出请求。CORS需要浏览器和<strong>服务器</strong>同时支持。目前主流的浏览器(IE10以下不支持)都支持CORS，因此实现CORS的关键在于服务端。服务端需要设置一个对应的“Access-Control-Allow-Header”，来响应跨域请求。  </p>
 <p>前端代码，对请求头进行相应的设置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'发送给服务端的数据'</span>;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,url,<span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
+
+<p>后端的“Access-Control-Allow-Headers”配置中必须包含该请求头，即可跨域取资源。同时也需要对“Access-Control-Allow-Origin”进行配置，对应请求url地址，或者配置为“*”，接受任何域名请求。</p>
+<h2 id="nginx解决跨域"><a href="#nginx解决跨域" class="headerlink" title="nginx解决跨域"></a>nginx解决跨域</h2><p>目前比较常用的跨域解决方法是利用nginx设置反向代理。nginx解决跨域的方法是拦截跨域请求，反向代理到接口地址。项目在本地跑起来的时候都是localhost的域名，与接口地址很明确不是同源策略。</p>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -329,20 +332,11 @@
     <style>
         @media(min-width: 768px) {
             .cube-author img {
-                margin-top: 40px;
-                margin-bottom: 10px;
-            }
-        }
-        @media(max-width: 1120px) and (min-width: 768px) {
-            .cube-author img {
-                width: 128px;
-                height: 128px;
-            }
-        }
-        @media(min-width: 1120px) {
-            .cube-author img {
-                width: 160px;
-                height: 160px;
+                width: 90%;
+                margin: 0 auto;
+                height: auto;
+                padding: 20px 0 10px 0;
+                display: block;
             }
         }
     </style>
