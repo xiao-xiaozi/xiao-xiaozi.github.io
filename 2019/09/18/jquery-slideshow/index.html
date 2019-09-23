@@ -192,6 +192,8 @@
 <h2 id="简单的HTML代码"><a href="#简单的HTML代码" class="headerlink" title="简单的HTML代码"></a>简单的HTML代码</h2><p>使用一个div内嵌一个无序列表即可实现轮播图的基础架构。当然少不了左右两个点击的按钮。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"slideshow"</span>&gt;</span><br><span class="line">        &lt;span class=<span class="string">"right"</span>&gt;&gt;&lt;/span&gt;</span><br><span class="line">        &lt;span class=<span class="string">"left"</span>&gt;&lt;&lt;/span&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;4&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <h2 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h2><p>这里主要利用了jQuery的siblings选择器，选中当前元素的其他兄弟元素。再利用jQuery的自带动画fadeIn和fadeOut来实现切换。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var <span class="variable">$li</span> = $(<span class="string">'.slideshow li'</span>);</span><br><span class="line"> var count = <span class="variable">$li</span>.length-1;</span><br><span class="line"> //右边按钮</span><br><span class="line"> $(<span class="string">'.slideshow .right'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">   count--;</span><br><span class="line">   //当切换到最后一张图片时，下一张为第一张图片</span><br><span class="line">   count = count == -1?<span class="variable">$li</span>.length-1:count;</span><br><span class="line">   <span class="variable">$li</span>.eq(count).fadeIn().siblings().fadeOut();</span><br><span class="line"> &#125;)</span><br><span class="line"> //左边按钮</span><br><span class="line"> $(<span class="string">'.slideshow .left'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">   count++;</span><br><span class="line">   count = count == <span class="variable">$li</span>.length?0:count;</span><br><span class="line">   <span class="variable">$li</span>.eq(count).fadeIn().siblings().fadeOut();</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
 
@@ -276,6 +278,30 @@
 
 
 <div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpg" alt="avatar" class="cube-avatar">
     
     
     <span>小小子</span>

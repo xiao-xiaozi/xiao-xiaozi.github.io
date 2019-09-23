@@ -195,44 +195,6 @@
 <h2 id="CORS解决跨域"><a href="#CORS解决跨域" class="headerlink" title="CORS解决跨域"></a>CORS解决跨域</h2><p>CORS，全称是Cross-Origin Resourc Sharing(跨域资源共享)。它允许浏览器向跨源服务器发出请求。CORS需要浏览器和<strong>服务器</strong>同时支持。目前主流的浏览器(IE10以下不支持)都支持CORS，因此实现CORS的关键在于服务端。服务端需要设置一个对应的“Access-Control-Allow-Header”，来响应跨域请求。  </p>
 <p>前端代码，对请求头进行相应的设置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'发送给服务端的数据'</span>;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,url,<span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
-
-<p>后端的“Access-Control-Allow-Headers”配置中必须包含该请求头，即可跨域取资源。同时也需要对“Access-Control-Allow-Origin”进行配置，对应请求url地址，或者配置为“*”，接受任何域名请求。</p>
-<h2 id="nginx解决跨域"><a href="#nginx解决跨域" class="headerlink" title="nginx解决跨域"></a>nginx解决跨域</h2><p>目前比较常用的跨域解决方法是利用nginx设置反向代理。nginx解决跨域的方法是拦截跨域请求，反向代理到接口地址。项目在本地跑起来的时候都是localhost的域名，与接口地址很明确不是同源策略。<br>项目中的数据请求：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'发送给服务端的数据'</span>;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line"><span class="comment"># xhr.open('POST','http://jiekoudizhi:8081/home/list');</span></span><br><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'http://localhost/home/list'</span>);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
-
-<p>将项目的请求地址改为本地请求地址，在nginx中配置拦截该请求，代理到对应的接口地址。<br>nginx配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       8080;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root    html;</span><br><span class="line">        index   index.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /home &#123;</span><br><span class="line">        proxy_pass  http://jiekoudizhi:8081/home;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如此配置会将本地<code>localhost/home</code>的请求代理到<code>http://jiekoudizhi:8081/home</code>，即访问<code>localhost/home</code>，实际访问的是<code>http://jiekoudizhi:8081/home</code>。</p>
-<p>如果你指定了请求的端口号，对应的proxy_pass代码也得写在相应的端口号的server下。当然更便捷的是，你可以直接修改当前监听的端口号8080。不过一般不建议这样做。这样操作在便捷的同时可能会给以后带来隐患。(某天你启动nginx按照默认localhost访问，一直访问不到…..)</p>
-<p>使用axios时，将baseURL设置为’localhost/home’。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const instance = axios.create(&#123;</span><br><span class="line">    baseURL: <span class="string">'http://localhost/home'</span>,</span><br><span class="line">    timeout: 5000</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> <span class="function"><span class="title">getGoods</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> instance(&#123;</span><br><span class="line">        url: <span class="string">'/list'</span>,</span><br><span class="line">        method: <span class="string">'get'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Vue-Cli配置解决跨域（特殊）"><a href="#Vue-Cli配置解决跨域（特殊）" class="headerlink" title="Vue-Cli配置解决跨域（特殊）"></a>Vue-Cli配置解决跨域（特殊）</h2><p>在Vue-CLi的配置文件中，有着自带的proxy配置，可以拦截特定的请求转发到指定的目标。这个时只在开发环境下才可以设置的选项。线上的还是需要用nginx或者CROS来解决。<br>在devServer下的proxy配置中配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="string">'/home'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://locahost:9090'</span>,</span><br><span class="line">            changeOrigin:<span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上代码配置将当前路径下的所有<code>/home</code>请求代理到<code>http://localhost:9090</code>。<br>Vue-Cli 3.x版本之前这个配置在config文件夹下index文件的dev配置下，配置名称为proxyTable。<br>Vue-cli 3.x版本之后更新了配置方式，该配置在vue.config.js的devServer下，配置名称为proxy。<br>虽然两者的配置名称不一样，但是配置方式是一模一样的。</p>
-<h2 id="jsonp解决跨域"><a href="#jsonp解决跨域" class="headerlink" title="jsonp解决跨域"></a>jsonp解决跨域</h2><!-- ### 请求的区分
-
-浏览器将CORS请求分为两类：简单请求和非简单请求。  
-#### 简单请求  
-只要满足任意以下两大条件，该请求就是简单请求。  
-(1)请求方法是以下三种之一：
--HEAD
--GET
--POST
-
-(2)HTTP的头信息不超出以下几种字段：
--Accept
--Accept-Language
--Content-Language
--Last-Event-ID
--Content-Type: application/x-www-form-urlencoded; multipart/form-data; text/plain
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'发送给服务端的数据'</span>;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,url,<span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
-
-<h4 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h4><p>不满足简单请求两大条件的，均为非简单请求。 –&gt;</p>
--->
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -260,12 +222,6 @@
            <p>slideshow(轮播图)是前端很常用的一个组件了，现在很多ui框架像bootstrap，element ui都集成了轮播图组件，可以直接使用。本文介绍使用jQuery快速搭建一个轮播图。</p>
 <h2 id="简单的HTML代码"><a href="#简单的HTML代码" class="headerlink" title="简单的HTML代码"></a>简单的HTML代码</h2><p>使用一个div内嵌一个无序列表即可实现轮播图的基础架构。当然少不了左右两个点击的按钮。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"slideshow"</span>&gt;</span><br><span class="line">        &lt;span class=<span class="string">"right"</span>&gt;&gt;&lt;/span&gt;</span><br><span class="line">        &lt;span class=<span class="string">"left"</span>&gt;&lt;&lt;/span&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;4&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href=<span class="string">"javascript:void(0)"</span>&gt;1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h2><p>这里主要利用了jQuery的siblings选择器，选中当前元素的其他兄弟元素。再利用jQuery的自带动画fadeIn和fadeOut来实现切换。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var <span class="variable">$li</span> = $(<span class="string">'.slideshow li'</span>);</span><br><span class="line"> var count = <span class="variable">$li</span>.length-1;</span><br><span class="line"> //右边按钮</span><br><span class="line"> $(<span class="string">'.slideshow .right'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">   count--;</span><br><span class="line">   //当切换到最后一张图片时，下一张为第一张图片</span><br><span class="line">   count = count == -1?<span class="variable">$li</span>.length-1:count;</span><br><span class="line">   <span class="variable">$li</span>.eq(count).fadeIn().siblings().fadeOut();</span><br><span class="line"> &#125;)</span><br><span class="line"> //左边按钮</span><br><span class="line"> $(<span class="string">'.slideshow .left'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">   count++;</span><br><span class="line">   count = count == <span class="variable">$li</span>.length?0:count;</span><br><span class="line">   <span class="variable">$li</span>.eq(count).fadeIn().siblings().fadeOut();</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>完整的代码可以戳<a href="https://github.com/xiao-xiaozi/learning/tree/master/jquery-slideshow" target="_blank" rel="noopener">这里</a>查看。</p>
-
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -368,6 +324,30 @@
 
 
 <div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="/images/avatar.jpg" alt="avatar" class="cube-avatar">
     
     
     <span>小小子</span>
