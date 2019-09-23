@@ -222,6 +222,25 @@
 
 <!-- TODO 根据theme.comment的内容进行入口选择 -->
 
+    <!-- 因为gitment里面也有gitment-container，所以这里就改为gitment-comment -->
+<div class="gitment-comment">
+    <div id="container"></div>
+</div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id default is location.href
+        owner: 'xiao-xiaozi',
+        repo: 'https://xiao-xiaozi.github.io/',
+        oauth: {
+            client_id: '57903a997b65a3e2bb96',
+            client_secret: '25677b79f0229b12e53c0d7a958d16c40c081d69',
+        },
+    })
+    gitment.render('container')
+</script>
+    
 
 
         </div>
