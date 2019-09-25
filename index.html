@@ -197,6 +197,7 @@
 <li><a href="#jsonp">jsonp</a></li>
 </ul>
 <h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><p>一个请求url的协议，域名，端口三者之间任意一个与当前页面地址不同，即为跨域。浏览器默认的安全限制为同源策略，即JavaScript或cookie只能访问同源(相同协议，相同域名，相同端口)下的内容。</p>
+<p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
 <h2 id="CORS解决跨域"><a href="#CORS解决跨域" class="headerlink" title="CORS解决跨域"></a>CORS解决跨域</h2><p>CORS，全称是Cross-Origin Resourc Sharing(跨域资源共享)。它允许浏览器向跨源服务器发出请求。CORS需要浏览器和<strong>服务器</strong>同时支持。目前主流的浏览器(IE10以下不支持)都支持CORS，因此实现CORS的关键在于服务端。服务端需要设置一个对应的“Access-Control-Allow-Header”，来响应跨域请求。  </p>
 <p>前端代码，对请求头进行相应的设置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'发送给服务端的数据'</span>;</span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,url,<span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
