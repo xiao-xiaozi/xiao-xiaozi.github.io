@@ -72,11 +72,6 @@
       
         <!-- 前端在开发的过程中时常会遇到跨域的问题。如何解决跨域的问题，也是必须掌握的技能。目前前端遇到跨域问题一般是在开发过程中，根据当前使用的技术栈不同可以有不同的解决跨域的方案。最古老的一种就是设置CORS，这个需要后端的配合。个人比较推崇纯前端解决方法--nginx。nginx设置代理也可以解决跨域问题。当然，若是使用了像Vue-Cl脚手架，或者webpack打包工具的话，当中也有配置可以解决跨域问题，接下来将一一说明。 -->
 
-<p>页面导航</p>
-<ul>
-<li><a href="#postMessage">postMessage</a></li>
-<li><a href="#jsonp">jsonp</a></li>
-</ul>
 <h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><p>一个请求url的协议，域名，端口三者之间任意一个与当前页面地址不同，即为跨域。浏览器默认的安全限制为同源策略，即JavaScript或cookie只能访问同源(相同协议，相同域名，相同端口)下的内容。</p>
 <p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
 <h2 id="CORS解决跨域"><a href="#CORS解决跨域" class="headerlink" title="CORS解决跨域"></a>CORS解决跨域</h2><p>CORS，全称是Cross-Origin Resourc Sharing(跨域资源共享)。它允许浏览器向跨源服务器发出请求。CORS需要浏览器和<strong>服务器</strong>同时支持。目前主流的浏览器(IE10以下不支持)都支持CORS，因此实现CORS的关键在于服务端。服务端需要设置一个对应的“Access-Control-Allow-Header”，来响应跨域请求。  </p>
@@ -96,7 +91,7 @@
 <p>使用axios时，将baseURL设置为’localhost/home’。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const instance = axios.create(&#123;</span><br><span class="line">    baseURL: &apos;http://localhost/home&apos;,</span><br><span class="line">    timeout: 5000</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export function getGoods() &#123;</span><br><span class="line">    return instance(&#123;</span><br><span class="line">        url: &apos;/list&apos;,</span><br><span class="line">        method: &apos;get&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="window-postMessage-方法实现跨源通信"><a href="#window-postMessage-方法实现跨源通信" class="headerlink" title="window.postMessage()方法实现跨源通信"></a><a name="postMessage">window.postMessage()方法实现跨源通信</a></h2><p>window.postMessage()方法提供了一种受控机制来规避跨源之间无法通信的限制，多用来解决iframe或window.open()打开的窗口，父子窗口之间的通信。显著的特点就是两个窗口/页面之间存在父子关系。  </p>
+<h2 id="window-postMessage-方法实现跨源通信"><a href="#window-postMessage-方法实现跨源通信" class="headerlink" title="window.postMessage()方法实现跨源通信"></a>window.postMessage()方法实现跨源通信</h2><p>window.postMessage()方法提供了一种受控机制来规避跨源之间无法通信的限制，多用来解决iframe或window.open()打开的窗口，父子窗口之间的通信。显著的特点就是两个窗口/页面之间存在父子关系。  </p>
 <p>一个窗口/页面可以获得对另一个窗口/页面的引用(比如targetWindow = window.opener)，然后在窗口/页面上调用targetWindow.postMessage()方法分发一个MessageEvent消息。接收消息的窗口/页面可以根据需要自由处理此事件。传递给window.postMessage()的参数将通过消息事件对象暴露给接收消息的窗口/页面。</p>
 <h4 id="简单介绍window-postMessage"><a href="#简单介绍window-postMessage" class="headerlink" title="简单介绍window.postMessage()"></a>简单介绍window.postMessage()</h4><p>语法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">otherWindow.postMessage(message, targetOrigin, [transfer]);</span><br></pre></td></tr></table></figure>
@@ -128,7 +123,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen        8081;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">             root  html;</span><br><span class="line">             index jieshouMessage.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen        8082;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">             root  html;</span><br><span class="line">             index postMessage.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>index后面对应的是文件名，如果更改或者使用了其它文件名index后面对应的就应该是更改之后的文件名。在修改完之后记得重启一下nginx。</p>
-<h2 id="jsonp解决跨域"><a href="#jsonp解决跨域" class="headerlink" title="jsonp解决跨域"></a><a name="jsonp">jsonp解决跨域</a></h2><p>jsonp也是解决跨域的一个方法，原理是利用标签的src属性来进行跨域请求，并且jsonp只能进行get请求。<br>为了实现跨域，在本地起了两个不同的端口来跑两个文件。<br>1、jsonp.html 在一个html页面中引入带有跨域请求的script标签。</p>
+<h2 id="jsonp解决跨域"><a href="#jsonp解决跨域" class="headerlink" title="jsonp解决跨域"></a>jsonp解决跨域</h2><p>jsonp也是解决跨域的一个方法，原理是利用标签的src属性来进行跨域请求，并且jsonp只能进行get请求。<br>为了实现跨域，在本地起了两个不同的端口来跑两个文件。<br>1、jsonp.html 在一个html页面中引入带有跨域请求的script标签。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"http://127.0.0.1:3330"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>2、jsonp.js</p>
@@ -172,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/22/关于跨域的解决方法/" data-id="ck1068pdv00021svrye314dac"
+      <a data-url="http://yoursite.com/2019/09/22/关于跨域的解决方法/" data-id="ck106i7ht00025gvra7g6333o"
          class="article-share-link">Share</a>
       
     </footer>
