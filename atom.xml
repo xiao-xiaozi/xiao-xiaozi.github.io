@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-26T04:12:41.523Z</updated>
+  <updated>2019-09-27T07:48:46.440Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node学习之简单留言页面</title>
+    <link href="http://yoursite.com/2019/09/26/node%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%AE%80%E5%8D%95%E7%95%99%E8%A8%80%E9%A1%B5%E9%9D%A2/"/>
+    <id>http://yoursite.com/2019/09/26/node学习之简单留言页面/</id>
+    <published>2019-09-26T15:20:48.000Z</published>
+    <updated>2019-09-27T07:48:46.440Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!-- 本文是node学习系列第一篇，后续还会继续更新。作者通过这些例子学习node相关知识。 --&gt;
+
+&lt;p&gt;node为JavaScript提供了许多服务器级别的API，这些API绝大多数被封装到了一个具名的核心模块中。例如文件操作的&lt;code&gt;fs&lt;/code&gt;核心模块、http服务构建的的&lt;code&gt;http&lt;/code&gt;核心模块、&lt;code&gt;os&lt;/code&gt;操作系统模块…..&lt;/p&gt;
+&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h3&gt;&lt;p&gt;nodejs是作为后端语言存在的、所谓后端即服务器嘛！所以，一上来先起一个服务器。（看起来很厉害，然并卵。）&lt;/p&gt;
+&lt;!-- 要起一个node服务器首先要引入node的核心模块，`http`模块，通过这个模块接口启动一个服务器。 --&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//1-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//server.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var http = require(&amp;apos;http&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var server = http.createServer();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server.on(&amp;apos;request&amp;apos;,function(request,response)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    response.write(&amp;apos;hello world&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    response.end();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server.listen(3030);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;上面的1-1代码用node核心模块&lt;code&gt;http&lt;/code&gt;起了一个服务器，现在只要在当前文件所在目录进入cmd窗口，执行&lt;code&gt;node server.js&lt;/code&gt;命令，就可以启动服务器了。在浏览器中输入&lt;code&gt;localhost:3030&lt;/code&gt;或者&lt;code&gt;127.0.0.1:3030&lt;/code&gt;即可看到页面上有hello world输出。&lt;/p&gt;
+&lt;p&gt;接下来刨析前面这段代码各部分的作用(同时将涉及到的相关知识进行讲解)：&lt;br&gt;&lt;code&gt;require&lt;/code&gt;在node里的作用是引入，例如此处的引入核心模块&lt;code&gt;http&lt;/code&gt;，同时也可以拿到引入文件的导出对象(exports)。&lt;br&gt;&lt;code&gt;exports&lt;/code&gt;是node一个导出对象，存在于每个文件模块中。它可以将文件里面的函数，变量等导出，令其它文件引入这个文件之后可以使用这些变量、函数。默认是一个空对象。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//1-2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//a.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var foo = &amp;apos;xiaozi&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;exports.name = &amp;apos;xiaoxiaozi&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//b.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var a = require(&amp;apos;./a.js&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(a.foo);  //undefined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(a.name); //xiaoxiaozi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;只有通过&lt;code&gt;exports&lt;/code&gt;导出的变量才可以在其它文件内被访问到。(服务端的console.log并不在浏览器控制台显示，而是在命令行窗口显示。)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;http&lt;/code&gt;是node的核心模块之一，node包含了核心模块，用户自己编写的模块还有第三方模块。这里不一一细说，会在用到的时候进行说明。想多了解各种模块的小伙伴可以直接看&lt;a href=&quot;https://nodejs.org/dist/latest-v10.x/docs/api/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;node官方文档&lt;/a&gt;。&lt;br&gt;&lt;code&gt;http&lt;/code&gt;核心模块就是用来创建一个服务器的，调用&lt;code&gt;http.createServer()&lt;/code&gt;方法就可以创建一个服务器，返回值是一个服务器实例。&lt;br&gt;创建好服务器之后，就要监听请求。监听请求用:&lt;code&gt;server.on(&amp;#39;request&amp;#39;, function(request,response){})&lt;/code&gt;。第二个参数是一个函数，当监听到请求时执行，该函数有两个参数‘request’和‘response’。‘request’是浏览器的请求可以用来获取请求路径(&lt;code&gt;request.url&lt;/code&gt;)等，‘response’是响应参数，用来给浏览器发送数据。使用&lt;code&gt;response.write()&lt;/code&gt;可以给浏览器发送数据，可以多次使用’write’来发送数据但是最后一定要调用&lt;code&gt;response.end()&lt;/code&gt;来告诉浏览器数据发送已经结束否则浏览器会一直在等待状态，并不知道数据发送已结束。最后，响应数据只能是&lt;strong&gt;二进制数据或者字符串&lt;/strong&gt;，其它的数据类型数字、数组、对象、布尔值都不可以。&lt;br&gt;服务端程序在启动的时候需要指定一个端口号。ip地址可以定位到计算机，端口号则可以定位到具体的应用程序。只有知道了端口号，才可以知道我们在与哪个程序进行通信。平常我们浏览的网页中并不需要指定端口号也可以访问到对应的网站是因为http协议或者https协议有默认的端口号(http:80;https:443)，这些网站都部署在默认端口号上，所以在访问的时候不需要指定端口号。&lt;code&gt;server.listen(3030)&lt;/code&gt;表示当前程序端口是3030，想要和这个程序通信必须指定3030端口。这个方法有可选的回调函数，在服务器启动之后执行。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//1-3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server.listen(3030,function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(&amp;apos;Server on.....&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>关于跨域和常用解决方法</title>
