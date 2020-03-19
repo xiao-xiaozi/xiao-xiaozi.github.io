@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="小小子，前端技术，分享,前端，HTML，CSS，JavaScript">
+  
+  
+    <meta name="description" content="作者的前端学习笔记，分享。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    关于HTML |
+    
+    二者皆让我沉醉不已！</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-关于HTML" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于HTML
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/03/19/关于HTML/" class="article-date">
+  <time datetime="2020-03-19T07:17:47.000Z" itemprop="datePublished">2020-03-19</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p>本文是对HTML一些知识的查漏补缺，不会涉及到所有的HTML知识，作为作者自己的记录方便查找。</p>
+<h3 id="元数据-lt-meta-gt-元素"><a href="#元数据-lt-meta-gt-元素" class="headerlink" title="元数据:&lt;meta&gt;元素"></a>元数据:<code>&lt;meta&gt;</code>元素</h3><p>元数据就是描述数据的数据，而HTML有一个”官方的“方式来为一个文档添加元数据——<code>&lt;meta&gt;</code>元素。<br>许多的<mete> 元素包含了name和content特性：</mete></p>
+<ul>
+<li>name 指定了meta元素的类型，说明该元素包含了什么类型的消息。</li>
+<li>content 指定了实际的元数据内容。</li>
+</ul>
+<p>例如指定作者和描述信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;author&quot; content=&quot;xiaozi&quot;&gt;</span><br><span class="line">&lt;mete name=&quot;description&quot; content=&quot;This page is learning to HTML.&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>description也被用在搜索引擎显示的结果页中。</p>
+<h4 id="其它类型的元数据"><a href="#其它类型的元数据" class="headerlink" title="其它类型的元数据"></a>其它类型的元数据</h4><p>网站上许多功能都是专有创作，旨在向某些网站提供可使用的特定信息。</p>
+<h3 id="lang属性为文档设定主语言"><a href="#lang属性为文档设定主语言" class="headerlink" title="lang属性为文档设定主语言"></a><code>lang</code>属性为文档设定主语言</h3><p>通过lang属性添加到HTML开始标签中来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>为文档设置语言，文档会被搜索引擎更有效的索引(例如，语序它在特定语言的结果中正确的显示)。</p>
+<p>还可以将文档分段设置为不同的语言。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Japanese example: &lt;span lang=&quot;jp&quot;&gt;ご飯が熱い。&lt;/span&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="超链接相关"><a href="#超链接相关" class="headerlink" title="超链接相关"></a>超链接相关</h3><h4 id="文档片段"><a href="#文档片段" class="headerlink" title="文档片段"></a>文档片段</h4><p>超链接除了可以链接到文档外，还可以链接到HTML文档的特定部分(被称为文档片段)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//contacts.html</span><br><span class="line">&lt;h2 id=&quot;Mailing_address&quot;&gt;Mailing address&lt;/h2&gt;</span><br><span class="line">//在同一份文档内链接</span><br><span class="line">p&gt;The &lt;a href=&quot;#Mailing_address&quot;&gt;company mailing address&lt;/a&gt; can be found at the bottom of this page.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">//不同文档内也可以链接</span><br><span class="line">&lt;p&gt;Want to write us a letter? Use our &lt;a href=&quot;contacts.html#Mailing_address&quot;&gt;mailing address&lt;/a&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="download属性"><a href="#download属性" class="headerlink" title="download属性"></a>download属性</h4><p>当链接到要下载的资源而不是在浏览器打开的时候，可以使用download属性提供一个默认的保存文件名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://download.mozilla.org/?product=firefox-latest-ssl&amp;os=win64&amp;lang=en-US&quot;</span><br><span class="line">   download=&quot;firefox-latest-64bit-installer.exe&quot;&gt;</span><br><span class="line">  Download Latest Firefox for Windows (64-bit) (English, US)</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="电子邮件链接"><a href="#电子邮件链接" class="headerlink" title="电子邮件链接"></a>电子邮件链接</h4><p>a链接可以用来发送邮件，而不仅仅是链接到一个页面。使用<code>mailtto:URL</code>来指定收件人的电子邮箱地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;mailto:nowhere@mozilla.org&quot;&gt;Send email to nowhere&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>甚至可以不指定邮箱地址来打开发邮件的窗口(<code>href=&quot;mailto:&quot;</code>)，只是没有收件人的地址信息。在分享链接的时候很有用，用户可以发送给他们选择的地址邮件。</p>
+<p>除了电子邮件地址，还可以提供其它信息。任何标准的邮件头字段可以被添加到提供的邮件URL。其中最常用的是主题(subject)、抄送(cc)和主体(body)。每个字段及其值被指定为查询项。<a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82" target="_blank" rel="noopener">具体细节</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&amp;bcc=name3@rapidtables.com&amp;subject=The%20subject%20of%20the%20email&amp;body=The%20body%20of%20the%20email&quot;&gt;</span><br><span class="line">  Send mail with cc, bcc, subject and body</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="三大列表之描述列表"><a href="#三大列表之描述列表" class="headerlink" title="三大列表之描述列表"></a>三大列表之描述列表</h3><p>这种列表的目的是标记一组项目及其相关描述，例如术语和定义，问题和答案。描述列表使用与其它列表类型不同的闭合标签——<code>&lt;dl&gt;</code>。此外，每一项都用<code>&lt;dt&gt;</code>元素包裹。每个描述都用<code>&lt;dd&gt;</code>元素包裹。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">  &lt;dt&gt;内心独白&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;戏剧中，某个角色对自己的内心活动或感受进行念白表演，这些台词只面向观众，而其他角色不会听到。&lt;/dd&gt;</span><br><span class="line">  &lt;dt&gt;语言独白&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;戏剧中，某个角色把自己的想法直接进行念白表演，观众和其他角色都可以听到。&lt;/dd&gt;</span><br><span class="line">  &lt;dt&gt;旁白&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;戏剧中，为渲染幽默或戏剧性效果而进行的场景之外的补充注释念白，只面向观众，内容一般都是角色的感受、想法、以及一些背景信息等。&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="引用相关"><a href="#引用相关" class="headerlink" title="引用相关"></a>引用相关</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting#%E5%BC%95%E7%94%A8" target="_blank" rel="noopener">HTML也有用于标记引用的特性，至于使用哪个元素标记，取决于你引用的是一块还是一行。（MDN链接）</a></p>
+<h4 id="块引用"><a href="#块引用" class="headerlink" title="块引用"></a>块引用</h4><p><code>&lt;blockquote&gt;</code>标签包裹引用的内容，并在<code>cite</code>属性里用URL来指向引用的资源。<br>浏览器在渲染块引用时默认会增加缩进，作为引用的一个指示符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;blockquote cite=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote&quot;&gt;</span><br><span class="line">  &lt;p&gt;The &lt;strong&gt;HTML &lt;code&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt; Element&lt;/strong&gt; (or &lt;em&gt;HTML Block</span><br><span class="line">  Quotation Element&lt;/em&gt;) indicates that the enclosed text is an extended quotation.&lt;/p&gt;</span><br><span class="line">&lt;/blockquote&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="行内引用"><a href="#行内引用" class="headerlink" title="行内引用"></a>行内引用</h4><p>行内引用的方式和块级引用的一样、唯一的不同是使用了<code>&lt;q&gt;</code>元素。浏览器默认将其作为普通文本放入引号内表示引用。<br><code>&lt;q&gt;</code>元素旨在用于不需要分段的短引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;The quote element — &lt;code&gt;&amp;lt;q&amp;gt;&lt;/code&gt; — is &lt;q cite=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q&quot;&gt;intended</span><br><span class="line">for short quotations that don&apos;t require paragraph breaks.&lt;/q&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="缩略语"><a href="#缩略语" class="headerlink" title="缩略语"></a>缩略语</h3><p><code>&lt;abbr&gt;</code>用来包裹一个缩略语或缩写，并提供缩写的解释(包含在title属性中)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;我们使用 &lt;abbr title=&quot;超文本标记语言（Hypertext Markup Language）&quot;&gt;HTML&lt;/abbr&gt; 来组织网页文档。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;第 33 届 &lt;abbr title=&quot;夏季奥林匹克运动会&quot;&gt;奥运会&lt;/abbr&gt; 将于 2024 年 8 月在法国巴黎举行。&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="上标和下标"><a href="#上标和下标" class="headerlink" title="上标和下标"></a>上标和下标</h3><p><code>&lt;sup&gt;</code>上标、<code>&lt;sub&gt;</code>下标。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;咖啡因的化学方程式是 C&lt;sub&gt;8&lt;/sub&gt;H&lt;sub&gt;10&lt;/sub&gt;N&lt;sub&gt;4&lt;/sub&gt;O&lt;sub&gt;2&lt;/sub&gt;。&lt;/p&gt;</span><br><span class="line">&lt;p&gt;如果 x&lt;sup&gt;2&lt;/sup&gt; 的值为 9，那么 x 的值必为 3 或 -3。&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="语义化标记"><a href="#语义化标记" class="headerlink" title="语义化标记"></a>语义化标记</h3><p><code>&lt;header&gt;</code> 页眉<br><code>&lt;nav&gt;</code> 导航栏<br><code>&lt;main&gt;</code> 主内容。主内容中还可以有各种子内容区段，可以用<code>&lt;article&gt;</code>、<code>&lt;section&gt;</code>和<code>&lt;div&gt;</code>等元素表示。<br><code>&lt;aside&gt;</code> 侧边栏<br><code>&lt;footer&gt;</code> 页脚<br><a href="https://developer.mozilla.org/zh-CN/docs/learn/HTML/Introduction_to_HTML/%E6%96%87%E4%BB%B6%E5%92%8C%E7%BD%91%E7%AB%99%E7%BB%93%E6%9E%84#%E7%94%A8%E4%BA%8E%E6%9E%84%E5%BB%BA%E5%86%85%E5%AE%B9%E7%9A%84_HTML" target="_blank" rel="noopener">详细MDN链接地址！</a></p>
+<h3 id="HTML表格"><a href="#HTML表格" class="headerlink" title="HTML表格"></a>HTML表格</h3><p><code>&lt;caption&gt;</code>为表格设置一个标题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;caption&gt;Dinosaurs in the Jurassic period&lt;/caption&gt;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="为表格中的列提供共同的样式"><a href="#为表格中的列提供共同的样式" class="headerlink" title="为表格中的列提供共同的样式"></a>为表格中的列提供共同的样式</h4><p>HTML由一种方式可以定义整列数据的样式信息就是利用<code>&lt;col&gt;</code>和<code>&lt;colgroup&gt;</code>元素。<br><code>&lt;col&gt;</code>元素被定义在<code>colgroup</code>容器中，而<code>&lt;colgroup&gt;</code>就在<code>&lt;table&gt;</code>标签下方(即使表格使用了<code>&lt;thead&gt;</code>，<code>colgroup</code>依旧在最上方)。一个<code>&lt;col&gt;</code>代表一列，在对应的列里面设置样式。会作用到相应的列上。<br>下面代码，第一个<code>&lt;col&gt;</code>没有编写样式代码，即第一列没有特殊样式，第二个<code>&lt;col&gt;</code>设置了背景颜色，即表格对应的第二列会有背景颜色。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;colgroup&gt;</span><br><span class="line">    &lt;col&gt;</span><br><span class="line">    &lt;col style=&quot;background-color: yellow&quot;&gt;</span><br><span class="line">  &lt;/colgroup&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;th&gt;Data 1&lt;/th&gt;</span><br><span class="line">    &lt;th&gt;Data 2&lt;/th&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;Calcutta&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;Orange&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td&gt;Robots&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;Jazz&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果为多列设置相同样式可以通过<code>span</code>属性来实现。<code>span</code>是一个无单位数值，代表有几列样式相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;colgroup&gt;</span><br><span class="line">  &lt;col style=&quot;background-color: yellow&quot; span=&quot;2&quot;&gt;</span><br><span class="line">&lt;/colgroup&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="scope属性"><a href="#scope属性" class="headerlink" title="scope属性"></a>scope属性</h4><p>添加在<code>&lt;th&gt;</code>元素中，用来帮助屏幕阅读设备更好地理解标题单元格。<a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Tables/Advanced#scope_%E5%B1%9E%E6%80%A7" target="_blank" rel="noopener">详细链接。</a></p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><p>表单属性：<code>action</code>属性定义了在提交表单时，应该把收集的数据发送到哪(URL)处理。<code>method</code>属性定义了发送数据的HTTP方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/my-handling-form-page&quot; method=&quot;post&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="表单分段"><a href="#表单分段" class="headerlink" title="表单分段"></a>表单分段</h4><p><code>fieldset</code>和<code>legend</code>元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">  &lt;fieldset&gt;</span><br><span class="line">    &lt;legend&gt;Fruit juice size&lt;/legend&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;input type=&quot;radio&quot; name=&quot;size&quot; id=&quot;size_1&quot; value=&quot;small&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;size_1&quot;&gt;Small&lt;/label&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;input type=&quot;radio&quot; name=&quot;size&quot; id=&quot;size_2&quot; value=&quot;medium&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;size_2&quot;&gt;Medium&lt;/label&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;input type=&quot;radio&quot; name=&quot;size&quot; id=&quot;size_3&quot; value=&quot;large&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;size_3&quot;&gt;Large&lt;/label&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/fieldset&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="表单校验"><a href="#表单校验" class="headerlink" title="表单校验"></a>表单校验</h4><p>HTML5校验方法<br>-required属性，必须填写项<br>-pattern属性，<a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/Data_form_validation#%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%A1%E9%AA%8C" target="_blank" rel="noopener">使用正则表达式进行校验</a></p>
+<p>自定义错误信息<br>使用JavaScript实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">  &lt;label for=&quot;mail&quot;&gt;I would like you to provide me an e-mail&lt;/label&gt;</span><br><span class="line">  &lt;input type=&quot;email&quot; id=&quot;mail&quot; name=&quot;mail&quot;&gt;</span><br><span class="line">  &lt;button&gt;Submit&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">//js</span><br><span class="line">var email = document.getElementById(&quot;mail&quot;);</span><br><span class="line"></span><br><span class="line">email.addEventListener(&quot;input&quot;, function (event) &#123;</span><br><span class="line">  if (email.validity.typeMismatch) &#123;</span><br><span class="line">    email.setCustomValidity(&quot;I expect an e-mail, darling!&quot;);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    email.setCustomValidity(&quot;&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>email.validity.typeMismatch</code>如果元素的值出现语法错误，返回true，否则返回false。<br><a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/Data_form_validation#%E7%BA%A6%E6%9D%9F%E6%A0%A1%E9%AA%8C%E7%9A%84_API" target="_blank" rel="noopener">JavaScript约束校验API。</a></p>
+<h3 id="安全问题"><a href="#安全问题" class="headerlink" title="安全问题"></a>安全问题</h3><h4 id="XSS和CSRF"><a href="#XSS和CSRF" class="headerlink" title="XSS和CSRF"></a>XSS和CSRF</h4><p>XSS允许攻击者将客户端脚本注入到其他用户查看的Web页面中。攻击者可以使用跨站点脚本攻击的漏洞来绕过诸如<strong>同源策略</strong>之类的访问控制。这些攻击的影响可能从一个小麻烦到一个重大的安全风险。</p>
+<p>CSRF攻击类似于XSS攻击，因为它们以相同的方式开始攻击——向Web页面中注入客户端脚本——但它们的目的是不同的。CSRF攻击者试图将权限升级到特权用户(比如站点管理员)的级别，以执行他们不应该执行的操作(例如，将数据发送给一个不受信任的用户)。</p>
+<p>XSS攻击利用用户对Web站点的信任，而CSRF攻击则利用网站对其用户的信任。</p>
+<!-- #### SQL注入
+
+#### HTTP数据头注入和电子邮件注入 -->
+
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>[1] <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">MDN Webw文档</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/19/关于HTML/" data-id="ck7yfag7y000698xi49y64m3k"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/09/26/node学习之简单留言页面/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">node学习之简单留言页面</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '57903a997b65a3e2bb96',
+      clientSecret: '25677b79f0229b12e53c0d7a958d16c40c081d69',
+      repo: 'gitalk',
+      owner: 'xiao-xiaozi',
+      admin: ['xiao-xiaozi'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 二者皆让我沉醉不已！</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="二者皆让我沉醉不已！"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

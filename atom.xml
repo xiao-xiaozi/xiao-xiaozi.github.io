@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-27T07:48:46.440Z</updated>
+  <updated>2020-03-19T07:21:21.688Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于HTML</title>
+    <link href="http://yoursite.com/2020/03/19/%E5%85%B3%E4%BA%8EHTML/"/>
+    <id>http://yoursite.com/2020/03/19/关于HTML/</id>
+    <published>2020-03-19T07:17:47.000Z</published>
+    <updated>2020-03-19T07:21:21.688Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文是对HTML一些知识的查漏补缺，不会涉及到所有的HTML知识，作为作者自己的记录方便查找。&lt;/p&gt;
+&lt;h3 id=&quot;元数据-lt-meta-gt-元素&quot;&gt;&lt;a href=&quot;#元数据-lt-meta-gt-元素&quot; class=&quot;headerlink&quot; title=&quot;元数据:&amp;lt;meta&amp;gt;元素&quot;&gt;&lt;/a&gt;元数据:&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;元素&lt;/h3&gt;&lt;p&gt;元数据就是描述数据的数据，而HTML有一个”官方的“方式来为一个文档添加元数据——&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;元素。&lt;br&gt;许多的&lt;mete&gt; 元素包含了name和content特性：&lt;/mete&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name 指定了meta元素的类型，说明该元素包含了什么类型的消息。&lt;/li&gt;
+&lt;li&gt;content 指定了实际的元数据内容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如指定作者和描述信息&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;meta name=&amp;quot;author&amp;quot; content=&amp;quot;xiaozi&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;mete name=&amp;quot;description&amp;quot; content=&amp;quot;This page is learning to HTML.&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;description也被用在搜索引擎显示的结果页中。&lt;/p&gt;
+&lt;h4 id=&quot;其它类型的元数据&quot;&gt;&lt;a href=&quot;#其它类型的元数据&quot; class=&quot;headerlink&quot; title=&quot;其它类型的元数据&quot;&gt;&lt;/a&gt;其它类型的元数据&lt;/h4&gt;&lt;p&gt;网站上许多功能都是专有创作，旨在向某些网站提供可使用的特定信息。&lt;/p&gt;
+&lt;h3 id=&quot;lang属性为文档设定主语言&quot;&gt;&lt;a href=&quot;#lang属性为文档设定主语言&quot; class=&quot;headerlink&quot; title=&quot;lang属性为文档设定主语言&quot;&gt;&lt;/a&gt;&lt;code&gt;lang&lt;/code&gt;属性为文档设定主语言&lt;/h3&gt;&lt;p&gt;通过lang属性添加到HTML开始标签中来实现。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;为文档设置语言，文档会被搜索引擎更有效的索引(例如，语序它在特定语言的结果中正确的显示)。&lt;/p&gt;
+&lt;p&gt;还可以将文档分段设置为不同的语言。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;p&amp;gt;Japanese example: &amp;lt;span lang=&amp;quot;jp&amp;quot;&amp;gt;ご飯が熱い。&amp;lt;/span&amp;gt;.&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;超链接相关&quot;&gt;&lt;a href=&quot;#超链接相关&quot; class=&quot;headerlink&quot; title=&quot;超链接相关&quot;&gt;&lt;/a&gt;超链接相关&lt;/h3&gt;&lt;h4 id=&quot;文档片段&quot;&gt;&lt;a href=&quot;#文档片段&quot; class=&quot;headerlink&quot; title=&quot;文档片段&quot;&gt;&lt;/a&gt;文档片段&lt;/h4&gt;&lt;p&gt;超链接除了可以链接到文档外，还可以链接到HTML文档的特定部分(被称为文档片段)。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//contacts.html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;h2 id=&amp;quot;Mailing_address&amp;quot;&amp;gt;Mailing address&amp;lt;/h2&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//在同一份文档内链接&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;p&amp;gt;The &amp;lt;a href=&amp;quot;#Mailing_address&amp;quot;&amp;gt;company mailing address&amp;lt;/a&amp;gt; can be found at the bottom of this page.&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//不同文档内也可以链接&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;p&amp;gt;Want to write us a letter? Use our &amp;lt;a href=&amp;quot;contacts.html#Mailing_address&amp;quot;&amp;gt;mailing address&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;download属性&quot;&gt;&lt;a href=&quot;#download属性&quot; class=&quot;headerlink&quot; title=&quot;download属性&quot;&gt;&lt;/a&gt;download属性&lt;/h4&gt;&lt;p&gt;当链接到要下载的资源而不是在浏览器打开的时候，可以使用download属性提供一个默认的保存文件名。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;https://download.mozilla.org/?product=firefox-latest-ssl&amp;amp;os=win64&amp;amp;lang=en-US&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   download=&amp;quot;firefox-latest-64bit-installer.exe&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Download Latest Firefox for Windows (64-bit) (English, US)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;电子邮件链接&quot;&gt;&lt;a href=&quot;#电子邮件链接&quot; class=&quot;headerlink&quot; title=&quot;电子邮件链接&quot;&gt;&lt;/a&gt;电子邮件链接&lt;/h4&gt;&lt;p&gt;a链接可以用来发送邮件，而不仅仅是链接到一个页面。使用&lt;code&gt;mailtto:URL&lt;/code&gt;来指定收件人的电子邮箱地址。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;mailto:nowhere@mozilla.org&amp;quot;&amp;gt;Send email to nowhere&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;甚至可以不指定邮箱地址来打开发邮件的窗口(&lt;code&gt;href=&amp;quot;mailto:&amp;quot;&lt;/code&gt;)，只是没有收件人的地址信息。在分享链接的时候很有用，用户可以发送给他们选择的地址邮件。&lt;/p&gt;
+&lt;p&gt;除了电子邮件地址，还可以提供其它信息。任何标准的邮件头字段可以被添加到提供的邮件URL。其中最常用的是主题(subject)、抄送(cc)和主体(body)。每个字段及其值被指定为查询项。&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;具体细节&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&amp;amp;bcc=name3@rapidtables.com&amp;amp;subject=The%20subject%20of%20the%20email&amp;amp;body=The%20body%20of%20the%20email&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Send mail with cc, bcc, subject and body&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>node学习之简单留言页面</title>
     <link href="http://yoursite.com/2019/09/26/node%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%AE%80%E5%8D%95%E7%95%99%E8%A8%80%E9%A1%B5%E9%9D%A2/"/>
     <id>http://yoursite.com/2019/09/26/node学习之简单留言页面/</id>
     <published>2019-09-26T15:20:48.000Z</published>
-    <updated>2019-09-27T07:48:46.440Z</updated>
+    <updated>2020-03-18T16:27:57.303Z</updated>
     
     <summary type="html">
     
@@ -33,7 +79,7 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//1-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//server.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var http = require(&amp;apos;http&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var server = http.createServer();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server.on(&amp;apos;request&amp;apos;,function(request,response)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    response.write(&amp;apos;hello world&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    response.end();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;server.listen(3030);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;p&gt;上面的1-1代码用node核心模块&lt;code&gt;http&lt;/code&gt;起了一个服务器，现在只要在当前文件所在目录进入cmd窗口，执行&lt;code&gt;node server.js&lt;/code&gt;命令，就可以启动服务器了。在浏览器中输入&lt;code&gt;localhost:3030&lt;/code&gt;或者&lt;code&gt;127.0.0.1:3030&lt;/code&gt;即可看到页面上有hello world输出。&lt;/p&gt;
-&lt;p&gt;接下来刨析前面这段代码各部分的作用(同时将涉及到的相关知识进行讲解)：&lt;br&gt;&lt;code&gt;require&lt;/code&gt;在node里的作用是引入，例如此处的引入核心模块&lt;code&gt;http&lt;/code&gt;，同时也可以拿到引入文件的导出对象(exports)。&lt;br&gt;&lt;code&gt;exports&lt;/code&gt;是node一个导出对象，存在于每个文件模块中。它可以将文件里面的函数，变量等导出，令其它文件引入这个文件之后可以使用这些变量、函数。默认是一个空对象。&lt;/p&gt;
+&lt;p&gt;接下来刨析前面这段代码各部分的作用(同时将涉及到的相关知识进行记录分享)：&lt;br&gt;&lt;code&gt;require&lt;/code&gt;在node里的作用是引入，例如此处的引入核心模块&lt;code&gt;http&lt;/code&gt;，同时也可以拿到引入文件的导出对象(exports)。&lt;br&gt;&lt;code&gt;exports&lt;/code&gt;是node一个导出对象，存在于每个文件模块中。它可以将文件里面的函数，变量等导出，令其它文件引入这个文件之后可以使用这些变量、函数。默认是一个空对象。&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//1-2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//a.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var foo = &amp;apos;xiaozi&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;exports.name = &amp;apos;xiaoxiaozi&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//b.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var a = require(&amp;apos;./a.js&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(a.foo);  //undefined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(a.name); //xiaoxiaozi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;p&gt;只有通过&lt;code&gt;exports&lt;/code&gt;导出的变量才可以在其它文件内被访问到。(服务端的console.log并不在浏览器控制台显示，而是在命令行窗口显示。)&lt;/p&gt;

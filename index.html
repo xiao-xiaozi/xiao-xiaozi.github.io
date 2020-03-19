@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   
   
+    <meta name="keywords" content="小小子，前端技术，分享,前端，HTML，CSS，JavaScript">
+  
+  
+    <meta name="description" content="作者的前端学习笔记，分享。">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
@@ -22,33 +26,36 @@
 <body>
 <main class="content">
   <section class="jumbotron">
-  <div class="video">
-    
-      <div class="video-frame">
-        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
-      </div>
-    
-    <div class="video-media">
-      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
-             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
-        <source src="/images/ocean/ocean.mp4" type="video/mp4">
-        <source src="/images/ocean/ocean.ogv" type="video/ogg">
-        <source src="/images/ocean/ocean.webm" type="video/webm">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-      </video>
-      <div class="video-overlay"></div>
+    <div class="video">
+        
+        <div class="video-frame">
+            <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+        </div>
+        
+        <div class="video-media">
+            <video playsinline="" autoplay="" loop="" muted="" data-autoplay="" poster="/images/ocean/ocean.png" x5-video-player-type="h5">
+                <source src="/images/ocean/ocean.mp4" type="video/mp4">
+                <source src="/images/ocean/ocean.ogv" type="video/ogg">
+                <source src="/images/ocean/ocean.webm" type="video/webm">
+                <p>Your user agent does not support the HTML5 Video element.</p>
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="video-inner text-center text-white">
+            <h1><a href="/">二者皆让我沉醉不已！</a></h1>
+            <p>小子的博客</p>
+            <div><img src="/images/hexo-inverted.svg" class="brand" alt="二者皆让我沉醉不已！"></div>
+        </div>
+        <div class="video-learn-more">
+            <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+        </div>
     </div>
-    <div class="video-inner text-center text-white">
-      <h1><a href="/">二者皆让我沉醉不已！</a></h1>
-      <p>小子的博客</p>
-      <div><img src="/images/hexo-inverted.svg" class="brand" alt="二者皆让我沉醉不已！"></div>
-    </div>
-    <div class="video-learn-more">
-      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
-    </div>
-  </div>
+    <!-- 首页视频换图片简化的代码 -->
+    <!-- <div class="video-media">
+        <img src="/images/ocean/">
+        <div class="video-overlay"></div>
+    </div> -->
 </section>
-
 <div id="landingpage">
   <section class="outer">
   <article class="articles">
@@ -56,6 +63,97 @@
     <h1 class="page-type-title"></h1>
 
     
+      
+        
+
+<article id="post-关于HTML" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/03/19/关于HTML/">关于HTML</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/03/19/关于HTML/" class="article-date">
+  <time datetime="2020-03-19T07:17:47.000Z" itemprop="datePublished">2020-03-19</time>
+</a>
+        
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p>本文是对HTML一些知识的查漏补缺，不会涉及到所有的HTML知识，作为作者自己的记录方便查找。</p>
+<h3 id="元数据-lt-meta-gt-元素"><a href="#元数据-lt-meta-gt-元素" class="headerlink" title="元数据:&lt;meta&gt;元素"></a>元数据:<code>&lt;meta&gt;</code>元素</h3><p>元数据就是描述数据的数据，而HTML有一个”官方的“方式来为一个文档添加元数据——<code>&lt;meta&gt;</code>元素。<br>许多的<mete> 元素包含了name和content特性：</mete></p>
+<ul>
+<li>name 指定了meta元素的类型，说明该元素包含了什么类型的消息。</li>
+<li>content 指定了实际的元数据内容。</li>
+</ul>
+<p>例如指定作者和描述信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;author&quot; content=&quot;xiaozi&quot;&gt;</span><br><span class="line">&lt;mete name=&quot;description&quot; content=&quot;This page is learning to HTML.&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>description也被用在搜索引擎显示的结果页中。</p>
+<h4 id="其它类型的元数据"><a href="#其它类型的元数据" class="headerlink" title="其它类型的元数据"></a>其它类型的元数据</h4><p>网站上许多功能都是专有创作，旨在向某些网站提供可使用的特定信息。</p>
+<h3 id="lang属性为文档设定主语言"><a href="#lang属性为文档设定主语言" class="headerlink" title="lang属性为文档设定主语言"></a><code>lang</code>属性为文档设定主语言</h3><p>通过lang属性添加到HTML开始标签中来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>为文档设置语言，文档会被搜索引擎更有效的索引(例如，语序它在特定语言的结果中正确的显示)。</p>
+<p>还可以将文档分段设置为不同的语言。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Japanese example: &lt;span lang=&quot;jp&quot;&gt;ご飯が熱い。&lt;/span&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="超链接相关"><a href="#超链接相关" class="headerlink" title="超链接相关"></a>超链接相关</h3><h4 id="文档片段"><a href="#文档片段" class="headerlink" title="文档片段"></a>文档片段</h4><p>超链接除了可以链接到文档外，还可以链接到HTML文档的特定部分(被称为文档片段)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//contacts.html</span><br><span class="line">&lt;h2 id=&quot;Mailing_address&quot;&gt;Mailing address&lt;/h2&gt;</span><br><span class="line">//在同一份文档内链接</span><br><span class="line">p&gt;The &lt;a href=&quot;#Mailing_address&quot;&gt;company mailing address&lt;/a&gt; can be found at the bottom of this page.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">//不同文档内也可以链接</span><br><span class="line">&lt;p&gt;Want to write us a letter? Use our &lt;a href=&quot;contacts.html#Mailing_address&quot;&gt;mailing address&lt;/a&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="download属性"><a href="#download属性" class="headerlink" title="download属性"></a>download属性</h4><p>当链接到要下载的资源而不是在浏览器打开的时候，可以使用download属性提供一个默认的保存文件名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;https://download.mozilla.org/?product=firefox-latest-ssl&amp;os=win64&amp;lang=en-US&quot;</span><br><span class="line">   download=&quot;firefox-latest-64bit-installer.exe&quot;&gt;</span><br><span class="line">  Download Latest Firefox for Windows (64-bit) (English, US)</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="电子邮件链接"><a href="#电子邮件链接" class="headerlink" title="电子邮件链接"></a>电子邮件链接</h4><p>a链接可以用来发送邮件，而不仅仅是链接到一个页面。使用<code>mailtto:URL</code>来指定收件人的电子邮箱地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;mailto:nowhere@mozilla.org&quot;&gt;Send email to nowhere&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>甚至可以不指定邮箱地址来打开发邮件的窗口(<code>href=&quot;mailto:&quot;</code>)，只是没有收件人的地址信息。在分享链接的时候很有用，用户可以发送给他们选择的地址邮件。</p>
+<p>除了电子邮件地址，还可以提供其它信息。任何标准的邮件头字段可以被添加到提供的邮件URL。其中最常用的是主题(subject)、抄送(cc)和主体(body)。每个字段及其值被指定为查询项。<a href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82" target="_blank" rel="noopener">具体细节</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&amp;bcc=name3@rapidtables.com&amp;subject=The%20subject%20of%20the%20email&amp;body=The%20body%20of%20the%20email&quot;&gt;</span><br><span class="line">  Send mail with cc, bcc, subject and body</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-link" href="/2020/03/19/关于HTML/">Read More...</a>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/19/关于HTML/" data-id="ck7yfag7y000698xi49y64m3k"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
       
         
 
@@ -104,7 +202,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//1-1</span><br><span class="line">//server.js</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">var server = http.createServer();</span><br><span class="line">server.on(&apos;request&apos;,function(request,response)&#123;</span><br><span class="line">    response.write(&apos;hello world&apos;);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(3030);</span><br></pre></td></tr></table></figure>
 
 <p>上面的1-1代码用node核心模块<code>http</code>起了一个服务器，现在只要在当前文件所在目录进入cmd窗口，执行<code>node server.js</code>命令，就可以启动服务器了。在浏览器中输入<code>localhost:3030</code>或者<code>127.0.0.1:3030</code>即可看到页面上有hello world输出。</p>
-<p>接下来刨析前面这段代码各部分的作用(同时将涉及到的相关知识进行讲解)：<br><code>require</code>在node里的作用是引入，例如此处的引入核心模块<code>http</code>，同时也可以拿到引入文件的导出对象(exports)。<br><code>exports</code>是node一个导出对象，存在于每个文件模块中。它可以将文件里面的函数，变量等导出，令其它文件引入这个文件之后可以使用这些变量、函数。默认是一个空对象。</p>
+<p>接下来刨析前面这段代码各部分的作用(同时将涉及到的相关知识进行记录分享)：<br><code>require</code>在node里的作用是引入，例如此处的引入核心模块<code>http</code>，同时也可以拿到引入文件的导出对象(exports)。<br><code>exports</code>是node一个导出对象，存在于每个文件模块中。它可以将文件里面的函数，变量等导出，令其它文件引入这个文件之后可以使用这些变量、函数。默认是一个空对象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//1-2</span><br><span class="line">//a.js</span><br><span class="line">var foo = &apos;xiaozi&apos;;</span><br><span class="line">exports.name = &apos;xiaoxiaozi&apos;;</span><br><span class="line"></span><br><span class="line">//b.js</span><br><span class="line">var a = require(&apos;./a.js&apos;);</span><br><span class="line">console.log(a.foo);  //undefined</span><br><span class="line">console.log(a.name); //xiaoxiaozi</span><br></pre></td></tr></table></figure>
 
 <p>只有通过<code>exports</code>导出的变量才可以在其它文件内被访问到。(服务端的console.log并不在浏览器控制台显示，而是在命令行窗口显示。)</p>
@@ -116,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/26/node学习之简单留言页面/" data-id="ck126gs1g0005ksvraya7wnqr"
+      <a data-url="http://yoursite.com/2019/09/26/node学习之简单留言页面/" data-id="ck7yfag7w000598xijfzs01jb"
          class="article-share-link">Share</a>
       
     </footer>
@@ -191,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/22/关于跨域的解决方法/" data-id="ck126gs1j0006ksvrhb07b6qy"
+      <a data-url="http://yoursite.com/2019/09/22/关于跨域的解决方法/" data-id="ck7yfag81000798xi55zd7fny"
          class="article-share-link">Share</a>
       
     </footer>
@@ -255,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/18/jquery-slideshow/" data-id="ck126gs0x0004ksvr64r3zx2q"
+      <a data-url="http://yoursite.com/2019/09/18/jquery-slideshow/" data-id="ck7yfag7k000498xi7mlwnm2l"
          class="article-share-link">Share</a>
       
     </footer>
@@ -327,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/17/hello-world/" data-id="ck126gs0u0003ksvre8fo7xhy"
+      <a data-url="http://yoursite.com/2019/09/17/hello-world/" data-id="ck7yfag7h000398xi7olckjkk"
          class="article-share-link">Share</a>
       
     </footer>
@@ -360,7 +458,7 @@
 </ul>
     </div>
     <ul class="list-inline">
-      <li>&copy; 2019 二者皆让我沉醉不已！</li>
+      <li>&copy; 2020 二者皆让我沉醉不已！</li>
       <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
     </ul>

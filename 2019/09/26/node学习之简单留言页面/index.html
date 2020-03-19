@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   
   
+    <meta name="keywords" content="小小子，前端技术，分享,前端，HTML，CSS，JavaScript">
+  
+  
+    <meta name="description" content="作者的前端学习笔记，分享。">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
@@ -78,7 +82,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//1-1</span><br><span class="line">//server.js</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">var server = http.createServer();</span><br><span class="line">server.on(&apos;request&apos;,function(request,response)&#123;</span><br><span class="line">    response.write(&apos;hello world&apos;);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(3030);</span><br></pre></td></tr></table></figure>
 
 <p>上面的1-1代码用node核心模块<code>http</code>起了一个服务器，现在只要在当前文件所在目录进入cmd窗口，执行<code>node server.js</code>命令，就可以启动服务器了。在浏览器中输入<code>localhost:3030</code>或者<code>127.0.0.1:3030</code>即可看到页面上有hello world输出。</p>
-<p>接下来刨析前面这段代码各部分的作用(同时将涉及到的相关知识进行讲解)：<br><code>require</code>在node里的作用是引入，例如此处的引入核心模块<code>http</code>，同时也可以拿到引入文件的导出对象(exports)。<br><code>exports</code>是node一个导出对象，存在于每个文件模块中。它可以将文件里面的函数，变量等导出，令其它文件引入这个文件之后可以使用这些变量、函数。默认是一个空对象。</p>
+<p>接下来刨析前面这段代码各部分的作用(同时将涉及到的相关知识进行记录分享)：<br><code>require</code>在node里的作用是引入，例如此处的引入核心模块<code>http</code>，同时也可以拿到引入文件的导出对象(exports)。<br><code>exports</code>是node一个导出对象，存在于每个文件模块中。它可以将文件里面的函数，变量等导出，令其它文件引入这个文件之后可以使用这些变量、函数。默认是一个空对象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//1-2</span><br><span class="line">//a.js</span><br><span class="line">var foo = &apos;xiaozi&apos;;</span><br><span class="line">exports.name = &apos;xiaoxiaozi&apos;;</span><br><span class="line"></span><br><span class="line">//b.js</span><br><span class="line">var a = require(&apos;./a.js&apos;);</span><br><span class="line">console.log(a.foo);  //undefined</span><br><span class="line">console.log(a.name); //xiaoxiaozi</span><br></pre></td></tr></table></figure>
 
 <p>只有通过<code>exports</code>导出的变量才可以在其它文件内被访问到。(服务端的console.log并不在浏览器控制台显示，而是在命令行窗口显示。)</p>
@@ -128,7 +132,7 @@
 <h4 id="关于静态资源"><a href="#关于静态资源" class="headerlink" title="关于静态资源"></a>关于静态资源</h4><p>页面中引用本地资源(静态资源)时不能通过相对路径引入，在这个留言本例子中开放了一个public文件夹存放静态资源文件，在服务器端可以通过路径拦截将请求指向正确的资源。此时资源的引入路径href或src都不是平常的相对路径形式，而是相当于一个url地址。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;/public/lib/bootstrap/dist/css/bootstrap.css&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<p>服务器会拦截所有前缀为<code>/public/</code>路径的请求，然后根据路径在静态资源文件夹public中找到对应的资源文件。</p>
+<p>通过以下路径拦截配置，服务器会拦截所有前缀为<code>/public/</code>的请求，然后根据路径在静态资源文件夹public中找到对应的资源文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//这里为代码片段</span><br><span class="line">else if (pathname.indexOf(&apos;/public/&apos;) === 0) &#123;</span><br><span class="line">      fs.readFile(&apos;.&apos; + pathname, function(err, data) &#123;</span><br><span class="line">        if (err) &#123;</span><br><span class="line">          return res.end(&apos;file read fail&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        res.end(data);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>本例到此结束。</p>
@@ -137,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/26/node学习之简单留言页面/" data-id="ck126gs1g0005ksvraya7wnqr"
+      <a data-url="http://yoursite.com/2019/09/26/node学习之简单留言页面/" data-id="ck7yfag7w000598xijfzs01jb"
          class="article-share-link">Share</a>
       
     </footer>
@@ -147,6 +151,15 @@
   
     
   <nav class="article-nav">
+    
+      <a href="/2020/03/19/关于HTML/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            关于HTML
+          
+        </div>
+      </a>
     
     
       <a href="/2019/09/22/关于跨域的解决方法/" class="article-nav-link">
@@ -198,7 +211,7 @@
 </ul>
     </div>
     <ul class="list-inline">
-      <li>&copy; 2019 二者皆让我沉醉不已！</li>
+      <li>&copy; 2020 二者皆让我沉醉不已！</li>
       <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
     </ul>
