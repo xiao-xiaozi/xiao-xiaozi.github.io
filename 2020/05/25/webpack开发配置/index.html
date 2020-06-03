@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="小小子，前端技术，分享,前端，HTML，CSS，JavaScript">
+  
+  
+    <meta name="description" content="作者的前端学习笔记，分享。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    webpack开发配置 |
+    
+    二者皆让我沉醉不已！</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-webpack开发配置" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack开发配置
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/05/25/webpack开发配置/" class="article-date">
+  <time datetime="2020-05-25T08:55:13.000Z" itemprop="datePublished">2020-05-25</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录一下webpack的开发配置。</p>
+<h2 id="详解配置"><a href="#详解配置" class="headerlink" title="详解配置"></a>详解配置</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><code>webpack.config.js</code>的最简构成（在开发环境下）大概聚合了下面这几项配置。其中</p>
+<ul>
+<li>entry 是入口文件配置，一个指向入口文件的路径</li>
+<li>output 是输出配置，指定了输出文件名和位置</li>
+<li>module 主要使用了module的rules属性，用于配置各式loader</li>
+<li>plugins 用于配置插件</li>
+<li>mode 用于指定当前模式，有development和production两个值</li>
+<li>devServer 只用于开发模式，用于启动一个服务便于实时查看效果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry:&apos;./src/js/index.js&apos;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:&apos;js/built.js&apos;,</span><br><span class="line">        path: path.resolve(__dirname, &apos;build)</span><br><span class="line">    &#125;,</span><br><span class="line">    module:&#123;</span><br><span class="line">        rules:[ ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[ ],</span><br><span class="line">    devtool:&apos;inline-source-map&apos;,</span><br><span class="line">    mode:&apos;development&apos;,</span><br><span class="line">    devServer:&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="入口配置"><a href="#入口配置" class="headerlink" title="入口配置"></a>入口配置</h3><p><code>entry</code>指定一个入口文件的路径，webpack根据该入口文件进行分析，打包依赖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">entry:&apos;./src/js/index.js&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出配置"><a href="#输出配置" class="headerlink" title="输出配置"></a>输出配置</h3><p><code>output</code>指定输出文件名和输出到哪里。filename属性前可以加一个<code>js</code>指定输出文件夹。若不指定则会输出到根文件夹，在同时包含字体文件，样式文件时根文件夹会过于混乱，建议指定输出文件夹。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output:&#123;</span><br><span class="line">    filename:&apos;js/built.js&apos;,</span><br><span class="line">    path: path.resolve(__dirname. &apos;build&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="rules配置"><a href="#rules配置" class="headerlink" title="rules配置"></a>rules配置</h3><p>module的<code>rules</code>属性用于配置各种loader，将对应的资源文件转为webpack能够识别的js文件。</p>
+<h4 id="样式资源"><a href="#样式资源" class="headerlink" title="样式资源"></a>样式资源</h4><p>样式资源包含了CSS、Less、Sass等CSS预处理语言。使用loader时需要线通过npm安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;</span><br><span class="line">            test:/\.css$/,</span><br><span class="line">            use:[&apos;style-loader&apos;,&apos;css-loader&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>test</code>使用正则匹配相对应的文件后缀名，然后对匹配到的文件使用<code>use</code>中的loader，loader的执行顺序是从右往左。<br>loader说明：</p>
+<ul>
+<li>css-loader 用于将css文件转为commonJS模块加载到js中。</li>
+<li>style-loader 用于创建style标签，将js中的样式资源插入到html文件的header中。</li>
+</ul>
+<p><strong>预处理语言</strong><br>CSS预处理语言的loader配置，仅需要在CSS  loader配置中的use数组加上对用的预处理语言的loader即可，less配置见下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module:&#123;</span><br><span class="line">    rules:&#123;</span><br><span class="line">        test:/\.less$/,</span><br><span class="line">        use:[&apos;style-loader&apos;,&apos;css-loader&apos;,&apos;less-loader&apos;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="图片资源"><a href="#图片资源" class="headerlink" title="图片资源"></a>图片资源</h4><p>图片资源分CSS中的图片资源和html中的图片资源，对对应的资源使用不同的loader。<br><strong>CSS中的图片资源</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">module:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;</span><br><span class="line">            test:/\.(jpg|png|gif)$/,</span><br><span class="line">            loader:&apos;url-loader&apos;,</span><br><span class="line">            options:&#123;</span><br><span class="line">                limit: 9*1024,</span><br><span class="line">                name:&apos;[hash:10].[ext]&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在单个loader的情况下可以直接使用<code>loader:&#39;url-loader&#39;</code>配置。<code>options</code>属性对loader所使用的loader进行设置。此处：</p>
+<ul>
+<li>limit 图片大小小于limit设置的值时，图片会被base64处理</li>
+<li>name 对输出图片名字进行配置，默认以hash值为名输出，名字较长，此处配置以hash值前10位为名，带上文件后缀名输出即可。</li>
+</ul>
+<p><strong>html中的图片资源</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">        test:/\.html$/,</span><br><span class="line">        loader:&apos;html-loader&apos;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>html文件中的图片资源使用<code>html-loader</code>解析。若出现图片资源引入路劲出错问题，有可能时<code>url-loader</code>使用了es6模块化的原因。可以在<code>url-loader</code>的配置对象中新增属性<code>esModule:false</code>,解决该问题。作者在使用过程未遇到此问题，有遇到的可以交流下。</p>
+<h4 id="其它资源"><a href="#其它资源" class="headerlink" title="其它资源"></a>其它资源</h4><p>在开发过程中，可能还包含除了JS、CSS、图片资源以外的资源，比如字体文件，icon等。此类资源使用<code>file-loader</code>处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;</span><br><span class="line">            exclude:/\.(html|js|css|png|jpg|gif)$/,</span><br><span class="line">            loader:&apos;loader&apos;,</span><br><span class="line">            options:&#123;</span><br><span class="line">                name:&apos;[hash:10].[ext]&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>exclude</code>属性表示排除，排除掉正则匹配到的文件以外的文件。</p>
+<h3 id="plugins配置"><a href="#plugins配置" class="headerlink" title="plugins配置"></a>plugins配置</h3><ol>
+<li>自动生成html的插件。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const HtmlWebpackPlugin = require(&apos;html-webpacl-plugin);</span><br><span class="line">&#123;</span><br><span class="line">    plugins:[</span><br><span class="line">        new HtmlWebpackPlugin(&#123;</span><br><span class="line">            template:&apos;./src/index.html&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>可以通过传一个<code>template</code>属性指定生成html文件的模板，若不配置模板，则自动生成。</p>
+<h3 id="devtool配置"><a href="#devtool配置" class="headerlink" title="devtool配置"></a>devtool配置</h3><p>配置source-map的选项。source-map 提供源代码到构建后代码映射技术，如果构建后代码出错了，通过映射可以追踪到源代码错误。<br>该项配置有多个可选项，每个可选项映射的结果不一样，一般使用<code>inline-source-map</code>。其它可选项详见<a href="https://www.webpackjs.com/configuration/devtool/" target="_blank" rel="noopener">wenpack官网说明</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  devtool:&apos;inline-source-map&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="mode配置"><a href="#mode配置" class="headerlink" title="mode配置"></a>mode配置</h3><p>模式配置，只有两个模式可选生产模式（production）和开发模式（development）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  mode:&apos;development&apos;,</span><br><span class="line">  //mode:&apos;production&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="devServer配置"><a href="#devServer配置" class="headerlink" title="devServer配置"></a>devServer配置</h3><p>devServer开发服务器配置，用来自动化（自动编译、自动打开浏览器、自动给刷新浏览器）。只会在内存中编译打包，不会有任何输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  contentBase:path.resolve(__dirname, &apos;build&apos;),</span><br><span class="line">  //启动gzip压缩</span><br><span class="line">  compress:true,</span><br><span class="line">  //端口号</span><br><span class="line">  port:3000,</span><br><span class="line">  //自动打开浏览器</span><br><span class="line">  open:true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const HtmlWepackPlugin = require(&apos;html-webpack-plugin&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &apos;./src/index.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;js/built.js&apos;,</span><br><span class="line">    path: path.resolve(__dirname, &apos;build&apos;),</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.less$/,</span><br><span class="line">        use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;less-loader&apos;],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        use: [&apos;style-loader&apos;, &apos;css-loader&apos;],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.(jpg|png|gif)$/,</span><br><span class="line">        loader: &apos;url-loader&apos;,</span><br><span class="line">        options: &#123;</span><br><span class="line">          limit: 8 * 1024,</span><br><span class="line">          name: &apos;[hash:10].[ext]&apos;,</span><br><span class="line">          esModule: false,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.html$/,</span><br><span class="line">        loader: &apos;html-loader&apos;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        exclude: /\.(html|js|css|less|jpg|png|gif)$/,</span><br><span class="line">        loader: &apos;file-loader&apos;,</span><br><span class="line">        options: &#123;</span><br><span class="line">          name: &apos;[hash:10].[ext]&apos;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    new HtmlWepackPlugin(&#123;</span><br><span class="line">      template: &apos;./src/index.html&apos;,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  mode: &apos;development&apos;,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: path.resolve(__dirname, &apos;build&apos;),</span><br><span class="line">    compress: true,</span><br><span class="line">    port: 3000,</span><br><span class="line">    open: true,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/25/webpack开发配置/" data-id="ckam9b0a00006hcxi3qcy6psd"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/04/04/git相关/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">git相关（未完成）</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '57903a997b65a3e2bb96',
+      clientSecret: '25677b79f0229b12e53c0d7a958d16c40c081d69',
+      repo: 'gitalk',
+      owner: 'xiao-xiaozi',
+      admin: ['xiao-xiaozi'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 二者皆让我沉醉不已！</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="二者皆让我沉醉不已！"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

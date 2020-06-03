@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-19T07:21:21.688Z</updated>
+  <updated>2020-06-03T06:18:18.494Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack开发配置</title>
+    <link href="http://yoursite.com/2020/05/25/webpack%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2020/05/25/webpack开发配置/</id>
+    <published>2020-05-25T08:55:13.000Z</published>
+    <updated>2020-06-03T06:18:18.494Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;记录一下webpack的开发配置。&lt;/p&gt;
+&lt;h2 id=&quot;详解配置&quot;&gt;&lt;a href=&quot;#详解配置&quot; class=&quot;headerlink&quot; title=&quot;详解配置&quot;&gt;&lt;/a&gt;详解配置&lt;/h2&gt;&lt;h3 id=&quot;基本结构&quot;&gt;&lt;a href=&quot;#基本结构&quot; class=&quot;headerlink&quot; title=&quot;基本结构&quot;&gt;&lt;/a&gt;基本结构&lt;/h3&gt;&lt;p&gt;&lt;code&gt;webpack.config.js&lt;/code&gt;的最简构成（在开发环境下）大概聚合了下面这几项配置。其中&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;entry 是入口文件配置，一个指向入口文件的路径&lt;/li&gt;
+&lt;li&gt;output 是输出配置，指定了输出文件名和位置&lt;/li&gt;
+&lt;li&gt;module 主要使用了module的rules属性，用于配置各式loader&lt;/li&gt;
+&lt;li&gt;plugins 用于配置插件&lt;/li&gt;
+&lt;li&gt;mode 用于指定当前模式，有development和production两个值&lt;/li&gt;
+&lt;li&gt;devServer 只用于开发模式，用于启动一个服务便于实时查看效果&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;const path = require(&amp;apos;path&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;module.exports = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    entry:&amp;apos;./src/js/index.js&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    output:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        filename:&amp;apos;js/built.js&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        path: path.resolve(__dirname, &amp;apos;build)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    module:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        rules:[ ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    plugins:[ ],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    devtool:&amp;apos;inline-source-map&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mode:&amp;apos;development&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    devServer:&amp;#123; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>git相关（未完成）</title>
+    <link href="http://yoursite.com/2020/04/04/git%E7%9B%B8%E5%85%B3/"/>
+    <id>http://yoursite.com/2020/04/04/git相关/</id>
+    <published>2020-04-04T03:36:12.000Z</published>
+    <updated>2020-04-29T06:59:34.286Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;git常用命令&quot;&gt;&lt;a href=&quot;#git常用命令&quot; class=&quot;headerlink&quot; title=&quot;git常用命令&quot;&gt;&lt;/a&gt;git常用命令&lt;/h2&gt;&lt;p&gt;记录一些git常用命令、便于需要时可以查看。&lt;/p&gt;
+&lt;h2 id=&quot;初始化仓库&quot;&gt;&lt;a href=
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>关于HTML</title>
