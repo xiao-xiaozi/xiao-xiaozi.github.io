@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-03T06:18:18.494Z</updated>
+  <updated>2020-06-08T12:43:17.899Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>webpack生产环境配置</title>
+    <link href="http://yoursite.com/2020/06/08/webpack%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2020/06/08/webpack生产环境配置/</id>
+    <published>2020-06-08T08:28:12.000Z</published>
+    <updated>2020-06-08T12:43:17.899Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;记录一些webpack生产环境构建的配置。&lt;/p&gt;
+&lt;h2 id=&quot;CSS处理&quot;&gt;&lt;a href=&quot;#CSS处理&quot; class=&quot;headerlink&quot; title=&quot;CSS处理&quot;&gt;&lt;/a&gt;CSS处理&lt;/h2&gt;&lt;h3 id=&quot;CSS兼容性处理&quot;&gt;&lt;a href=&quot;#CSS兼容性处理&quot; class=&quot;headerlink&quot; title=&quot;CSS兼容性处理&quot;&gt;&lt;/a&gt;CSS兼容性处理&lt;/h3&gt;&lt;p&gt;使用&lt;code&gt;postcss-loader&lt;/code&gt;解决CSS的兼容性问题。&lt;code&gt;postcss-preset-env&lt;/code&gt;插件帮助&lt;code&gt;postcss-loader&lt;/code&gt;找到&lt;code&gt;package.json&lt;/code&gt;文件中&lt;code&gt;browserslit&lt;/code&gt;里面的配置，通过配置加载指定的CSS兼容性样式。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;const PostcssPresetEnv = require(&amp;apos;postcss-preset-env&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;module.exports = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    module:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        rules:[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                test:/\.css$/,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                use:[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    &amp;apos;style-loader&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                        loader:&amp;apos;postcss-loader&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                        options:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            ident:&amp;apos;postcss&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            plugins: ()=&amp;gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                PostcssPresetEnv()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code&gt;package.json&lt;/code&gt;中的&lt;strong&gt;browserslist&lt;/strong&gt;配置：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;browserslist&amp;quot;:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 开发模式下，兼容最艰难一个浏览器版本即可&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;development&amp;quot;:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;last 1 chrome version&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;last 1 firefox version&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;last 1 safari version&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;production&amp;quot;:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;&amp;gt; 0.2%&amp;quot;, // 兼容99.8%的浏览器&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;no dead&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;not op_mini all&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>webpack开发配置</title>
     <link href="http://yoursite.com/2020/05/25/webpack%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2020/05/25/webpack开发配置/</id>
     <published>2020-05-25T08:55:13.000Z</published>
-    <updated>2020-06-03T06:18:18.494Z</updated>
+    <updated>2020-06-08T08:29:20.838Z</updated>
     
     <summary type="html">
     
