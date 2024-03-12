@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>微信小程序webview内嵌H5图片保存问题</title>
+      <link href="/2024/03/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fwebview%E5%86%85%E5%B5%8CH5%E5%9B%BE%E7%89%87%E4%BF%9D%E5%AD%98%E9%97%AE%E9%A2%98/"/>
+      <url>/2024/03/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fwebview%E5%86%85%E5%B5%8CH5%E5%9B%BE%E7%89%87%E4%BF%9D%E5%AD%98%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>微信小程序通过<code>webview</code>加载<code>H5</code>项目，在<code>H5</code>项目内保存图片时遇到问题记录。</p><p>项目所使用的技术栈:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">H5项目: uniapp 开发的项目</span><br><span class="line">微信小程序小程序: 第三方小程序，非项目组所能控制</span><br></pre></td></tr></table></figure><p>需求交付时，提到了一个图片展示页面，通过提供一个下载按钮，让用户点击后可以将图片下载到本地。基于项目为微信小程序内嵌H5的方式，第一时间提出了这个保存需要评估能否实现，以及具体实现的方式需要预研下。</p><blockquote><p>如果是真实图片路径，不会遇到后面的问题，只有临时路径才触发了问题。因图片为实时生成，故不存在真实路径，前端是经由下载后拿到临时路径进行展示的。</p></blockquote><p>在<code>uniapp</code>以及微信小程序文档查找，发现几乎所有的保存相关的接口都无法在H5端调用。能用使用上的方法仅有<code>downloadFile</code>接口，拿到文件的临时路径。</p><p>这是自然而然想到了可以通过微信的长按图片进行保存的操作。然而在实际测试中发现，只有在IOS上才可以保存成功，安卓一直提示保存失败。（长按后的操作弹窗有正常弹出，点保存后提示保存失败。）</p><p>自此，这个长按保存的方案也不可行。于是又转了一圈微信社区以及uniapp的问答区，也看见了有相关问题的讨论，但没有纯H5保存的方法。看起来可行（没有亲测过，项目的小程序是第三方的，联调比较困难。）的一个操作是H5与微信小程序通讯，让小程序进行图片保存操作。但这个方案对当前的项目来说比较困难。</p><p>后面因为一些原因，又回到长按保存的实现上，研究安卓上的保存问题。在测试过真实图片地址可以正常访问后，开始推测，会否是临时路径导致的保存失败。于是开始找非临时路径展示的方式。</p><p>最后，通过canvas将图片绘制出来，又转为<code>base64</code>图片后，测试在安卓以及IOS上均可以保存成功。至此问题解决！</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2024/03/08/hello-world/"/>
+      <url>/2024/03/08/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="创建一篇文章"><a href="#创建一篇文章" class="headerlink" title="创建一篇文章"></a>创建一篇文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure><p>默认以文章的标题作为文件名称，但可以通过编辑<code>new_post_name</code>参数来改变默认的文件名称，举例来说，设为<code>:year-:month-:day-:title.md</code>可以更方便的通过日期来管理文章。可以使用以下占位符。</p><table><thead><tr><th>变量</th><th>描述</th></tr></thead><tbody><tr><td><code>:title</code></td><td>标题（小写，空格将会被替换为短杠）</td></tr><tr><td><code>:year</code></td><td>建立的年份，比如，2015</td></tr><tr><td><code>:month</code></td><td>建立的月份（有前导零），比如，<code>04</code></td></tr><tr><td><code>i_month</code></td><td>建立的月份（无前导零），比如<code>4</code></td></tr><tr><td><code>:day</code></td><td>建立的日期（有前导零），比如<code>07</code></td></tr><tr><td><code>i_day</code></td><td>建立的日期（无前导零），比如<code>7</code></td></tr></tbody></table><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="创建草稿"><a href="#创建草稿" class="headerlink" title="创建草稿"></a>创建草稿</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure><h4 id="发布草稿"><a href="#发布草稿" class="headerlink" title="发布草稿"></a>发布草稿</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish &lt;title&gt;</span><br></pre></td></tr></table></figure><h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h2 id="使用的主题"><a href="#使用的主题" class="headerlink" title="使用的主题"></a>使用的主题</h2><p><a href="https://www.haomwei.com/technology/maupassant-hexo.html">地址</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
