@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="小小子的博客"><title>Regexp的基本知识 | write down something</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 7.1.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Regexp的基本知识</h1><a id="logo" href="/.">write down something</a><p class="description">Write for others but mostly for yourself.</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Regexp的基本知识</h1><div class="post-meta">2025-12-07<span> | </span><span class="updated">2025-12-07</span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.5k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 5</span><span class="post-meta-item-text"> Minutes</span></span></span></div><div class="post-content"><h1 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>RegExp</code>是正则表达式（Regular Expression）的简称。它便于匹配、查找字符串中的字符。</p>
+<h3 id="基本匹配"><a href="#基本匹配" class="headerlink" title="基本匹配"></a>基本匹配</h3><p>将想要查找的字符或单词直接输入，就像搜索一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/curious/gm</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="匹配任意字符"><a href="#匹配任意字符" class="headerlink" title="匹配任意字符."></a>匹配任意字符<code>.</code></h3><p><code>.</code>点符号可以匹配任何字符，包括特殊字符和空格。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/./g</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id=""><a href="#" class="headerlink" title="[]"></a><code>[]</code></h3><h4 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h4><p>如果想匹配的字符存在相同的部分，则可以用字符集将不同部分放起来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/b[aeior]r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述正则表达式匹配字符：<code>bar ber bir bor bur</code></p>
+<h4 id="否定字符集"><a href="#否定字符集" class="headerlink" title="否定字符集"></a>否定字符集</h4><p>在字符集的前面加上一个<code>^</code>符号，指定不匹配的字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/b[^eo]r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式在字符串<code>bar ber bir bor bur</code> 中仅匹配到<code>bar bir bur</code>。</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title="-"></a><code>-</code></h3><p>可以在字符集中使用连字符<code>-</code>，指定字母&#x2F;数字范围，区分大小写，包含起始的字母&#x2F;数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[a-z]/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式匹配<code>a-z</code>之间的字母。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[<span class="number">0</span>-<span class="number">9</span>]/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式匹配<code>0-9</code>之间的数字。</p>
+<p><strong>注意：数字范围仅能匹配<code>[0-9]</code>，不支持匹配10以上的数字范围，如：[20-50]。应该用<code>/[2345][0-9]/</code>来匹配20到50之间的数值</strong></p>
+<h3 id="0次或多次"><a href="#0次或多次" class="headerlink" title="0次或多次*"></a>0次或多次<code>*</code></h3><p><code>*</code>号表示一个字符完全不匹配或可以匹配多次。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/be*r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式匹配:<code>br ber beer</code></p>
+<h3 id="1次或多次"><a href="#1次或多次" class="headerlink" title="1次或多次+"></a>1次或多次<code>+</code></h3><p><code>+</code>号表示一个字符匹配1次或多次。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/be+r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式在字符串:<code>br ber beer</code>中仅能匹配到:<code>ber beer</code>。</p>
+<h3 id="可选"><a href="#可选" class="headerlink" title="可选?"></a>可选<code>?</code></h3><p>字符后面跟着<code>?</code>符号，表示该字符是可选的（可以有也可以没有）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/colou?r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式匹配：<code>color colour</code></p>
+<h3 id="指定次数"><a href="#指定次数" class="headerlink" title="指定次数{}"></a>指定次数<code>&#123;&#125;</code></h3><h4 id="指定字符出现的次数"><a href="#指定字符出现的次数" class="headerlink" title="指定字符出现的次数"></a>指定字符出现的次数</h4><p>为了表示一个字符出现的确切次数，可以在字符的末尾，将它出现的次数写进大括号<code>&#123;&#125;</code>中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/be&#123;<span class="number">2</span>&#125;r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式中，字符<code>e</code>后面跟着<code>&#123;2&#125;</code>，说明字符<code>e</code>只能出现两次。多于或少于都不匹配。</p>
+<p>指定字符至少出现几次，在大括号中的数字后加上一个逗号<code>,</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/be&#123;<span class="number">3</span>,&#125;r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式中，字符<code>e</code>后面跟着<code>&#123;3,&#125;</code>，表示字符<code>e</code>至少出现3次。</p>
+<p>指定字符出现次数的范围</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/be&#123;<span class="number">3</span>,<span class="number">6</span>&#125;r/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式中，字符<code>e</code>后面跟着<code>&#123;3,6&#125;</code>，表示字符<code>e</code>至少出现3次，至多出现6次。在此范围内的才匹配。</p>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组()"></a>分组<code>()</code></h3><p>使用括号<code>()</code>可以对表达式进行分组，并用这些分组来引用或执行一些规则。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(haa)/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式在字符串：<code>ha-ha,haa-haa</code>，中匹配<code>haa</code>字符。</p>
+<p>使用<code>\1</code>可以引用分组，数字表示分组的顺序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(ha)-\<span class="number">1</span>,(haa)-\<span class="number">2</span>/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式和<code>/(ha)-ha,(haa)-(haa)/g</code>等价。引用分组可以使表达式更简洁。</p>
+<p>非捕获分组。在分组前面加上<code>?:</code>会导致分组不会被捕获，即不参与引用分组时的排序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?:ha)-ha,(haa)-\<span class="number">1</span>/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式中由于<code>(?:ha)</code>分组有非捕获的标识，故而<code>\1</code>引用表示的是分组<code>(haa)</code>。</p>
+<h3 id="多个分支"><a href="#多个分支" class="headerlink" title="多个分支|"></a>多个分支<code>|</code></h3><p>竖线允许一个表达式包含多个不同分支。所有分支用<code>|</code>分隔。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(c|r)at|dog/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式同时匹配：<code>cat rat dog</code>。</p>
+<h3 id="转移字符"><a href="#转移字符" class="headerlink" title="转移字符\"></a>转移字符<code>\</code></h3><p>在书写正则表达式时，会用到<code>&#123;&#125; [] / \ + * . $ ^ | ?</code>这些特殊字符。为了匹配这些特殊字符本身，需要通过<code>\</code>反斜杠将它们转义。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(\*|\.)/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式匹配<code>.</code>和<code>*</code>符号。</p>
+<h3 id="匹配开始位置"><a href="#匹配开始位置" class="headerlink" title="匹配开始位置^"></a>匹配开始位置<code>^</code></h3><p>若想仅查找行首的字符，请在表达式前面加上<code>^</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[<span class="number">0</span>-<span class="number">9</span>]/gm</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式仅匹配行首的数字。</p>
+<h3 id="匹配结束位置"><a href="#匹配结束位置" class="headerlink" title="匹配结束位置$"></a>匹配结束位置<code>$</code></h3><p>若想仅查找行末的字符，请在表达式后面添加<code>$</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/html$/gm</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式匹配以<code>html</code>字符结尾的字符。</p>
+<p><code>\w</code>: 匹配字母、数字和下划线</p>
+<p><code>\W</code>: 匹配除字母、数字和下划线之外的字符</p>
+<p><code>\d</code>: 匹配数字</p>
+<p><code>\D</code>: 匹配除数字之外的字符</p>
+<p><code>\s</code>: 匹配空白符</p>
+<p><code>\S</code>: 匹配除空白符之外的字符</p>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>如果期望匹配的字符出现在另一个字符之前或之后，就需要用到断言。</p>
+<h4 id="先行断言"><a href="#先行断言" class="headerlink" title="先行断言"></a>先行断言</h4><p>匹配出现在指定字符之前的字符。（正向先行断言）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\d+(?=<span class="variable constant_">PM</span>)/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式只匹配字符<code>PM</code>前面的数字。</p>
+<p>也可以反过来匹配不位于指定字符之前的字符。（负向先行断言）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\d+(?!<span class="variable constant_">PM</span>)/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式只匹配不跟着字符<code>PM</code>的数字。</p>
+<h3 id="后行断言"><a href="#后行断言" class="headerlink" title="后行断言"></a>后行断言</h3><p>匹配出现在指定字符之后的字符。（正向后行断言）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;=\$)\d+/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式仅匹配<code>$</code>符号后的数字。</p>
+<p>匹配非出现在指定字符之后字符。（负向后行断言）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;!\$)\d+/g</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式仅匹配非跟随在<code>$</code>符号后的数字。</p>
+<h3 id="标识"><a href="#标识" class="headerlink" title="标识"></a>标识</h3><p>标识改变表达式的输出。这也是标识成为<strong>修饰符</strong>的原因，标识决定表达式是否将文本视作单独的行处理，是否区分大小写，或者是否查找所有匹配项。</p>
+<ul>
+<li><code>g</code>: <code>global</code>全局标识，使表达式选中所有匹配项。如果不启用全局标识，那么表达式只会匹配第一个匹配项。</li>
+<li><code>m</code>: <code>multiline</code>多行标识。正则表达式将所有文本视作一行。启用了多行标识，它就会单独处理每一行。</li>
+<li><code>i</code>: <code>case insensitive</code>忽略大小写标识。</li>
+</ul>
+<h3 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h3><p>正则表达式默认执行贪婪匹配。这意味着匹配内容会尽可能的长。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/.*r/</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式会匹配整个字符串：<code>ber beer beeer beeeer</code></p>
+<h3 id="懒惰匹配"><a href="#懒惰匹配" class="headerlink" title="懒惰匹配"></a>懒惰匹配</h3><p>与贪婪匹配不同，懒惰匹配在第一次匹配时停止。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/.*?r/</span><br></pre></td></tr></table></figure>
+
+<p>上述表达式对字符串：<code>ber beer beeer beeeer</code>进行匹配时，在匹配到<code>ber</code>时即停止匹配。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="next" href="/2025/08/22/%E8%BD%AC-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">[转]良好的系统设计</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css"><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+  clientID: '57903a997b65a3e2bb96',
+  clientSecret: '25677b79f0229b12e53c0d7a958d16c40c081d69',
+  repo: 'xiao-xiaozi.github.io',
+  owner: 'xiao-xiaozi',
+  admin: ['xiao-xiaozi'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Write for others but mostly for yourself.</p><a class="info-icon" href="https://github.com/xiao-xiaozi" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%85%E6%B8%B8/">旅游</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2025/12/07/Regexp%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Regexp的基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/08/22/%E8%BD%AC-%E8%89%AF%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">[转]良好的系统设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/07/22/git/">git</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/02/22/%E4%BA%91%E5%8D%97%E6%B8%B8%E8%AE%B0-md/">云南游记.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/09/07/%E4%BD%BF%E7%94%A8nginx%E7%9A%84auth-request%E6%A8%A1%E5%9D%97%E5%AF%B9%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90%E8%AE%BF%E9%97%AE%E9%89%B4%E6%9D%83/">使用nginx的auth_request模块对前端资源访问鉴权</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/18/%E4%B8%80%E4%BA%9B%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E9%97%AE%E9%A2%98%E6%80%9D%E8%80%83/">一些开发场景下的问题思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/18/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9C%A8IOS%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E6%97%A5%E6%9C%9F%E9%97%AE%E9%A2%98/">微信小程序在IOS上遇到的日期问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/18/patch-package%E4%BF%AE%E6%94%B9node-modules%E4%B8%AD%E7%9A%84%E4%BE%9D%E8%B5%96%E6%BA%90%E6%96%87%E4%BB%B6%E5%B9%B6%E5%9B%BA%E5%8C%96/">patch-package修改node_modules中的依赖源文件并固化</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fwebview%E5%86%85%E5%B5%8CH5%E5%9B%BE%E7%89%87%E4%BF%9D%E5%AD%98%E9%97%AE%E9%A2%98/">微信小程序webview内嵌H5图片保存问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/08/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://albert-cord.github.io" title="Albert-cord" target="_blank">Albert-cord</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2025 <a href="/." rel="nofollow">write down something.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
