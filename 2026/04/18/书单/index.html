@@ -1,7 +1,77 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="小小子的博客"><title>微信小程序在IOS上遇到的日期问题 | write down something</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 7.1.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">微信小程序在IOS上遇到的日期问题</h1><a id="logo" href="/.">write down something</a><p class="description">Write for others but mostly for yourself.</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">微信小程序在IOS上遇到的日期问题</h1><div class="post-meta">2024-03-18<span> | </span><span class="category"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 134</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> Minutes</span></span></span></div><div class="post-body"><div class="post-content"><h2 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h2><p>在小程序上执行涉及日期的相关操作时，日期值入参为<code>2020-01-01</code>格式。在模拟器以及安卓真机上均正常，但在IOS真机上出现日期错误问题。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>将日期格式更改为<code>2020/01/01</code>格式，在IOS真机上正常显示。</p>
-<p>可能是由于安卓与IOS底层对日期格式的实现有所不同导致的问题，比较难以排查的是，问题只在真机上才能够复现。</p>
-</div></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2024/05/18/%E4%B8%80%E4%BA%9B%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E9%97%AE%E9%A2%98%E6%80%9D%E8%80%83/">一些开发场景下的问题思考</a><a class="next" href="/2024/03/18/patch-package%E4%BF%AE%E6%94%B9node-modules%E4%B8%AD%E7%9A%84%E4%BE%9D%E8%B5%96%E6%BA%90%E6%96%87%E4%BB%B6%E5%B9%B6%E5%9B%BA%E5%8C%96/">patch-package修改node_modules中的依赖源文件并固化</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="https://unpkg.com/gitalk/dist/gitalk.css"><script type="text/javascript" src="https://unpkg.com/blueimp-md5/js/md5.js"></script><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="小小子的博客"><title>书单 | write down something</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 7.1.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">书单</h1><a id="logo" href="/.">write down something</a><p class="description">Write for others but mostly for yourself.</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">书单</h1><div class="post-meta">2026-04-18<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 142</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> Minutes</span></span></span></div><div class="post-body"><div class="post-content"><h2 id="wait-for-read"><a href="#wait-for-read" class="headerlink" title="wait for read"></a>wait for read</h2><table>
+<thead>
+<tr>
+<th>书名</th>
+<th>作者</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>《给一个未能出生的孩子的信》</td>
+<td>[意]奥里亚娜·法拉奇</td>
+<td>讲述生育与主流叙事并不相同的一面</td>
+</tr>
+<tr>
+<td>《海边的卡夫卡》</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>《置身事内》</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>《如何阅读一本书》</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>《与社会学同游》</td>
+<td>彼得·伯格</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="书单"><a href="#书单" class="headerlink" title="书单"></a>书单</h2><table>
+<thead>
+<tr>
+<th>书名</th>
+<th>作者</th>
+<th>阅读完成时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>《恶意》</td>
+<td>东野圭吾</td>
+<td>2023年2月</td>
+</tr>
+<tr>
+<td>《复活》</td>
+<td>列夫托尔斯泰</td>
+<td>2023年2月</td>
+</tr>
+<tr>
+<td>《三体III》</td>
+<td>刘慈欣</td>
+<td>2023年</td>
+</tr>
+<tr>
+<td>《夏日庭院》</td>
+<td>汤本香树实</td>
+<td>2023年</td>
+</tr>
+<tr>
+<td>《球状闪电》</td>
+<td>刘慈欣</td>
+<td>2024年</td>
+</tr>
+<tr>
+<td>《远山淡影》</td>
+<td>石黑一雄</td>
+<td>2025年</td>
+</tr>
+</tbody></table>
+</div></div><div class="tags"></div><div class="post-nav"><a class="next" href="/2026/03/08/exceljs%E5%AF%BC%E5%87%BA%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE-%E5%8A%A8%E6%80%81%E8%A1%A8%E5%A4%B4/">exceljs导出表格数据(动态表头)</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="https://unpkg.com/gitalk/dist/gitalk.css"><script type="text/javascript" src="https://unpkg.com/blueimp-md5/js/md5.js"></script><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
   clientID: '57903a997b65a3e2bb96',
   clientSecret: '25677b79f0229b12e53c0d7a958d16c40c081d69',
   repo: 'xiao-xiaozi.github.io',
